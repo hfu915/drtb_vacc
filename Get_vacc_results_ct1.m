@@ -1,6 +1,6 @@
 %% Get_vacc_results_ct1.m
 % get projections of vaccination and intervention scenarios
-% update on 12/11/2020
+% update on 01/12/2020
 
 % --- vaccination strategies 
 % (1) Regular vaccination: all 15-year-old at their birthdays, 2020-2035
@@ -36,9 +36,11 @@ evaVE = num2str(sel_ve*100);
 for iord = 1:1 % running projectionos for India only %1:nCt1 
     icty = CtyCt1(iord);
     
-    % load dataset
+    % load dataset and set up model
     evaCty = CtyISO3{icty};
+    Setup_model_ct1
     load(['MCMC_posterior_' evaCty '.mat']);
+    i = ref.i; p = prm.p; r = prm.r;
     nPostS = size(xs,1);
 
     % assign coverages for two vaccination programmes
