@@ -7,24 +7,30 @@ We categorised the 30 countries into four groups, representing different TB epid
 
 ## Description of files
 ### script
-* `Get_vacc_results_ct1.m`: obtain projections of population dynamics by different vaccination scenarios, using the posterior samples and parameters
- (`MCMC_posterior_IND.mat`)
+* `Setup_model_ct1.m`: input data and set up model structure
+* `Get_vacc_results_ct1.m`: obtain projections of population dynamics by different vaccination scenarios, after setting up the model (`Setup_model_ct1.m`) and loading the posterior samples (`MCMC_posterior_IND.mat`)
 * `Get_summary_results.m`: obtain country-level estimates of vaccine impacts from model projections (`Vacc_Tx_IND_ve50.mat`)
 
 ### data
+* `dataHBC_dmg.xlsx`: country-specific demographics
+* `dataHBC_tbb.xlsx`: country-specific TB burden and care cascade 
+* `dataHBC_tbb_yrs.xlsx`: additional country-specific TB burden (multiple time points)
+* `dataHBC_hiv.xlsx`: country-specific human immunodeficiency virus care cascade 
+* `dataHBC_ctt.xlsx`: country-specific mixing matrix (adpated from Prem et al., PLoS Comput Biol 2017)
 * `dataHBC_antibiotic_DHS.xlsx`: country-specific proportions of antibiotic use
 * `dataHBC_cough_IHME.xlsx`: country-specific burden of cough-related diseases
 * `dataHBC_vacCov.xlsx`: country-specific vaccination coverages
 
 ### output
-* `MCMC_posterior_IND.mat`: posterior samples acquried from calibration and other model parameters
+* `MCMC_posterior_IND.mat`: posterior samples and compartment sizes at 2019 acquried from calibration
 * `Vacc_Tx_IND_ve50.mat`: expected results of model projections for vaccine impacts in India, by processing the script `Get_vacc_results_ct1.m`
 
 ### funtion
+* `get_addresses.m`: naming structure for different states
 * `goveqs_basis_ct1.m`: governing equations for ODEs and time-varying transitions  
 * `goveqs_scaleup_ct1.m`: governing equations for linear scale-up, built on the function `goveqs_basis_ct1.m`  
 * `goveqs_scaleup_int_ct1.m`: governing equations for linear scale-up during the improvement of durg-resistance management, built on the function `goveqs_basis_ct1.m`
-* `make_model_ct1.m`: main model structure of TB transmission
+* `make_model_ct1.m`: model structure of TB transmission and care cascade
  
 
 ## Demo: Estimating vaccine impacts on drug-resistant TB in India
